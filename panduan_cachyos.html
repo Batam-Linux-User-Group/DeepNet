@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panduan Install CachyOS — deepnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <div class="stars" aria-hidden="true"></div>
+        <div class="guide-shell">
+            <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+            <header class="guide-heading">
+                <div class="chip">panduan instalasi</div>
+                <h1 class="guide-title">install cachyos</h1>
+                <p class="guide-description">CachyOS berbasis Arch dan berfokus pada performa. Installer grafis Calamares memandu pemilihan bootloader, filesystem, dan desktop.</p>
+            </header>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">01</span> Persiapan perangkat dan ISO</h2>
+                <ul>
+                    <li>Persyaratan acuan: RAM minimal 2 GB (4 GB atau lebih disarankan), ruang disk minimal 30 GB, dan CPU x86-64 modern.</li>
+                    <li>Unduh Desktop Edition untuk PC/laptop atau Handheld Edition untuk perangkat portabel yang didukung dari <a href="https://cachyos.org/download/" target="_blank" rel="noopener noreferrer">situs resmi CachyOS</a>.</li>
+                    <li>Cadangkan data. Untuk dual boot Windows, cek UEFI/GPT, kecilkan partisi Windows 50–100 GB menjadi ruang <em>Unallocated</em>, dan matikan Fast Startup. Jika installer perlu mengakses partisi Windows, BitLocker mungkin perlu dinonaktifkan. Buat backup dan simpan recovery key terlebih dahulu.</li>
+                    <li>Jika installer tidak melihat SSD/NVMe, periksa Intel RST/RAID. Jangan mengubah mode ke AHCI tanpa persiapan Windows terlebih dahulu.</li>
+                    <li>Gunakan USB kosong dan Rufus, Ventoy, atau BalenaEtcher. Proses penulisan menghapus isi USB.</li>
+                    <li>Nonaktifkan Secure Boot sebelum instalasi CachyOS. Catat pengaturan firmware sebelumnya agar dapat dipulihkan bila diperlukan.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">02</span> Boot ke installer online</h2>
+                <ol>
+                    <li>Buka Boot Menu UEFI/BIOS, pilih USB, lalu tunggu sampai lingkungan live CachyOS terbuka.</li>
+                    <li>Sambungkan komputer ke internet karena installer online mengambil paket terbaru.</li>
+                    <li>Jalankan CachyOS Installer dari layar sambutan, lalu pilih bahasa, wilayah, dan tata letak keyboard.</li>
+                    <li>Installer dapat mendeteksi dukungan arsitektur CPU; periksa catatan rilis jika perangkat tidak kompatibel.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">03</span> Pilih bootloader, filesystem, dan desktop</h2>
+                <ol>
+                    <li>Pilih bootloader yang ditawarkan: systemd-boot untuk konfigurasi ringkas, GRUB untuk fleksibilitas dual boot, atau opsi lain yang tersedia.</li>
+                    <li>Untuk instalasi bersih, opsi Btrfs dapat membuat subvolume dan terintegrasi dengan snapshot Snapper. Pastikan disk yang dipilih benar karena penghapusan disk akan menghilangkan data di dalamnya.</li>
+                    <li>Untuk dual boot, gunakan pengaturan manual hanya jika memahami partisi EFI dan filesystem. Jangan memformat partisi Windows atau EFI yang masih dipakai.</li>
+                    <li>Pilih desktop yang diinginkan (misalnya KDE Plasma, GNOME, Hyprland, COSMIC, XFCE, Sway, atau i3) dan paket tambahan.</li>
+                    <li>Masukkan username, hostname, dan kata sandi. Tinjau ringkasan disk sebelum menekan <strong>Install</strong>.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">04</span> Selesaikan dan optimalkan</h2>
+                <ol>
+                    <li>Tunggu instalasi selesai, restart, lalu lepaskan USB agar komputer boot ke CachyOS.</li>
+                    <li>Buka CachyOS Hello untuk melihat Apps/Tweaks dan opsi daemon performa. Pasang hanya komponen yang dibutuhkan.</li>
+                    <li>Jika bermain game, menu Apps/Tweaks menyediakan metapackage gaming; daemon seperti ananicy-cpp, systemd-oomd, dan bpftune dapat diaktifkan sesuai kebutuhan.</li>
+                    <li>Gunakan Kernel Manager jika ingin memilih varian kernel lain. Baca keterangan setiap kernel sebelum mengganti kernel aktif.</li>
+                    <li>Perbarui sistem secara berkala:</li>
+                </ol>
+                <pre><code>sudo pacman -Syu</code></pre>
+                <p>Untuk dual boot atau konfigurasi khusus, rujuk dokumentasi resmi CachyOS sebelum mengubah partisi atau bootloader.</p>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">05</span> Troubleshooting umum</h2>
+                <ul>
+                    <li>Jika komputer langsung masuk Windows, periksa Boot Order UEFI dan prioritaskan bootloader CachyOS.</li>
+                    <li>Jika layar hitam muncul setelah memasang driver GPU, gunakan mode pemulihan dan tinjau driver serta kernel dari dokumentasi CachyOS.</li>
+                    <li>Jika Wi-Fi/Bluetooth tidak terdeteksi, pastikan Fast Startup Windows nonaktif dan periksa firmware chipset yang dibutuhkan.</li>
+                    <li>Jika jam berbeda pada dual boot, periksa zona waktu dan pengaturan RTC sebelum mengubah jam hardware.</li>
+                </ul>
+            </section>
+
+            <footer class="guide-footer">
+                <p>&copy; 2026 Panduan CachyOS Indonesia. Tinjau pilihan disk dan filesystem sebelum menyetujui instalasi.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

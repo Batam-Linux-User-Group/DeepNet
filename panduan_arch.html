@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panduan Install Arch Linux — deepnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <div class="stars" aria-hidden="true"></div>
+        <div class="guide-shell">
+            <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+            <header class="guide-heading">
+                <div class="chip">panduan instalasi</div>
+                <h1 class="guide-title">install arch linux</h1>
+                <p class="guide-description">Arch adalah distro rolling release untuk pengguna yang ingin membangun sistem sendiri. Instalasi manual memerlukan perhatian pada setiap partisi dan perintah.</p>
+            </header>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">01</span> Persiapan dan boot media</h2>
+                <ul>
+                    <li>RAM minimum acuan 512 MB (2 GB atau lebih disarankan), ruang disk 2 GB minimum (20 GB atau lebih disarankan), serta koneksi internet aktif.</li>
+                    <li>Cadangkan data, unduh image dari <a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer">situs resmi Arch Linux</a>, lalu buat USB bootable. Rufus dalam DD mode, Ventoy, atau BalenaEtcher dapat digunakan.</li>
+                    <li>Untuk dual boot Windows, cek UEFI/GPT, kecilkan partisi Windows 50–100 GB menjadi ruang <em>Unallocated</em>, dan matikan Fast Startup. Jika installer perlu mengakses partisi Windows, BitLocker mungkin perlu dinonaktifkan. Buat backup dan simpan recovery key terlebih dahulu.</li>
+                    <li>Jika SSD/NVMe tidak terdeteksi, periksa Intel RST/RAID. Jangan mengubah mode ke AHCI tanpa mengikuti prosedur persiapan Windows.</li>
+                    <li>Nonaktifkan Secure Boot sebelum instalasi Arch. Catat setelan firmware awal dan ikuti kebijakan organisasi jika perangkat dikelola.</li>
+                    <li>Restart ke menu boot dan pilih USB. Jika font console terlalu kecil pada layar HiDPI, sesuaikan font sebelum melanjutkan.</li>
+                    <li>Pastikan boot UEFI dengan menjalankan <code>cat /sys/firmware/efi/fw_platform_size</code>; pada sistem UEFI 64-bit hasil yang diharapkan adalah <code>64</code>.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">02</span> Siapkan koneksi dan partisi</h2>
+                <p>Ethernet biasanya tersambung otomatis. Untuk Wi-Fi, nama perangkat (contoh <code>wlan0</code>) dapat berbeda:</p>
+                <pre><code>iwctl
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect "NamaSSID"
+exit
+ping -c 4 archlinux.org
+timedatectl set-ntp true</code></pre>
+                <p>Periksa disk dengan <code>lsblk -f</code>. Partisi dan format berikut dapat menghapus data; nama disk di contoh hanyalah ilustrasi. Hentikan proses jika belum yakin dengan disk tujuan.</p>
+                <ul>
+                    <li>Contoh skema UEFI: EFI FAT32 1 GB, swap 4–8 GB, root <code>/</code> 50 GB atau lebih, dan partisi <code>/home</code> untuk sisa ruang.</li>
+                    <li>Gunakan <code>cfdisk</code> untuk membuat partisi pada disk yang sudah diverifikasi. Pada dual boot, jangan format atau menghapus partisi Windows.</li>
+                    <li>Format dan mount partisi sesuai skema yang dibuat. Jangan menyalin perangkat contoh secara langsung tanpa menggantinya dengan partisi milikmu:</li>
+                </ul>
+                <pre><code>mkfs.fat -F 32 /dev/PARTISI_EFI
+mkswap /dev/PARTISI_SWAP
+swapon /dev/PARTISI_SWAP
+mkfs.ext4 /dev/PARTISI_ROOT
+mkfs.ext4 /dev/PARTISI_HOME
+mount /dev/PARTISI_ROOT /mnt
+mount --mkdir /dev/PARTISI_EFI /mnt/boot/efi
+mount --mkdir /dev/PARTISI_HOME /mnt/home</code></pre>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">03</span> Pasang sistem dasar dan konfigurasi</h2>
+                <p>Ganti paket microcode sesuai prosesor: <code>intel-ucode</code> untuk Intel atau <code>amd-ucode</code> untuk AMD.</p>
+                <pre><code>pacstrap -K /mnt base base-devel linux linux-firmware linux-headers \
+  networkmanager vim nano git man-db man-pages intel-ucode
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+hwclock --systohc</code></pre>
+                <ul>
+                    <li>Di dalam chroot, aktifkan locale yang diinginkan di <code>/etc/locale.gen</code>, jalankan <code>locale-gen</code>, lalu atur <code>/etc/locale.conf</code> dan hostname.</li>
+                    <li>Buat kata sandi root dan akun pengguna. Tambahkan akun ke grup <code>wheel</code>, lalu buka <code>visudo</code> dan aktifkan aturan sudo untuk grup tersebut.</li>
+                    <li>Periksa <code>/etc/fstab</code> dan setiap mount point sebelum mengatur bootloader.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">04</span> Pasang bootloader atau gunakan archinstall</h2>
+                <p>Untuk konfigurasi GRUB UEFI dan EFI terpasang di <code>/boot/efi</code>:</p>
+                <pre><code>pacman -S grub efibootmgr os-prober
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable NetworkManager
+exit
+umount -R /mnt
+reboot</code></pre>
+                <p>Untuk instalasi terpandu, jalankan <code>archinstall</code>. Pilih mirror, konfigurasi disk, bootloader, profil desktop, audio PipeWire, dan akun pengguna melalui menu; tinjau ringkasan disk sebelum memulai.</p>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">05</span> Pasca-instalasi</h2>
+                <ul>
+                    <li>Login sebagai pengguna baru. Contoh desktop KDE Plasma dan display manager SDDM:</li>
+                </ul>
+                <pre><code>sudo pacman -S plasma-meta kde-applications-meta sddm \
+  pipewire pipewire-pulse wireplumber
+sudo systemctl enable sddm</code></pre>
+                <ul>
+                    <li>Pilih driver GPU sesuai perangkat dari dokumentasi Arch. Hindari memasang paket driver yang tidak cocok dengan hardware.</li>
+                    <li>Perbarui sistem secara berkala dengan <code>sudo pacman -Syu</code>. AUR dikelola komunitas; tinjau PKGBUILD dan sumber paket sebelum memasang.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">06</span> Troubleshooting umum</h2>
+                <ul>
+                    <li>Jika komputer langsung masuk Windows, periksa UEFI Boot Order dan prioritaskan entri GRUB/Arch. Jika Windows belum muncul di GRUB, ikuti dokumentasi Arch untuk mengatur <code>os-prober</code>.</li>
+                    <li>Jika layar hitam muncul setelah pemasangan driver NVIDIA, gunakan opsi boot sementara atau mode pemulihan, lalu periksa driver dan kernel yang sesuai.</li>
+                    <li>Jika Wi-Fi/Bluetooth tidak terdeteksi, periksa chipset dan firmware yang diperlukan; Fast Startup Windows juga dapat mengganggu perangkat jaringan.</li>
+                    <li>Jika jam berbeda pada dual boot, periksa zona waktu dan pengaturan RTC sebelum mengubah perilaku jam hardware.</li>
+                </ul>
+            </section>
+
+            <footer class="guide-footer">
+                <p>&copy; 2026 Panduan Arch Linux Indonesia. Selalu verifikasi nama disk dan partisi sebelum menjalankan perintah format.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

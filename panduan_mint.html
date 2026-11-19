@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panduan Install Linux Mint — deepnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="page">
+        <div class="stars" aria-hidden="true"></div>
+        <div class="guide-shell">
+            <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+            <header class="guide-heading">
+                <div class="chip">panduan instalasi</div>
+                <h1 class="guide-title">install linux mint</h1>
+                <p class="guide-description">Linux Mint mengutamakan kemudahan penggunaan dan stabilitas. Ikuti persiapan dan langkah instalasi ini sebelum mengubah partisi.</p>
+            </header>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">01</span> Pilih edisi dan siapkan perangkat</h2>
+                <ul>
+                    <li>Cinnamon adalah edisi standar; MATE menawarkan desktop klasik, XFCE lebih ringan untuk perangkat lama, dan LMDE berbasis Debian Stable.</li>
+                    <li>Persyaratan acuan: RAM minimal 2 GB (4 GB disarankan) dan ruang disk minimal 20 GB (100 GB disarankan).</li>
+                    <li>Unduh ISO dari <a href="https://www.linuxmint.com/download.php" target="_blank" rel="noopener noreferrer">situs resmi Linux Mint</a>. Cocokkan checksum SHA256 dengan berkas resmi sebelum membuat USB.</li>
+                    <li>Cadangkan data. Untuk dual boot Windows, cek BIOS Mode lewat <code>msinfo32</code> dan GPT lewat Disk Management. Kecilkan partisi Windows sekitar 50–100 GB dan biarkan sebagai <em>Unallocated</em>; matikan Fast Startup. Jika installer perlu mengakses partisi Windows, BitLocker mungkin perlu dinonaktifkan. Simpan backup dan recovery key serta pahami dampaknya sebelum mengubah enkripsi.</li>
+                    <li>Jika installer tidak melihat SSD/NVMe, periksa mode Intel RST/RAID. Jangan mengganti ke AHCI tanpa menyiapkan Windows agar sistem tetap bisa boot.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">02</span> Buat USB dan uji sesi live</h2>
+                <ol>
+                    <li>Gunakan Rufus dengan GPT/UEFI, Ventoy, atau BalenaEtcher untuk menulis ISO ke USB kosong. Proses ini menghapus isi USB.</li>
+                    <li>Restart, buka Boot Menu, lalu pilih USB untuk masuk ke desktop live Linux Mint.</li>
+                    <li>Sebelum memasang, uji Wi-Fi, suara, keyboard, touchpad, dan tampilan agar masalah perangkat keras terlihat lebih awal.</li>
+                    <li>Klik dua kali ikon <strong>Install Linux Mint</strong> di desktop untuk membuka installer.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">03</span> Atur installer dan jenis instalasi</h2>
+                <ol>
+                    <li>Pilih bahasa dan tata letak keyboard. Centang <strong>Install multimedia codecs</strong> jika menginginkan codec tambahan.</li>
+                    <li><strong>Erase disk and install Linux Mint</strong> akan menghapus disk yang dipilih. Gunakan hanya jika memang ingin instalasi bersih.</li>
+                    <li><strong>Install alongside Windows Boot Manager</strong> dapat membantu dual boot; periksa alokasi ruang yang ditampilkan sebelum melanjutkan.</li>
+                    <li><strong>Something else</strong> adalah partisi manual. Untuk dual boot, pertahankan partisi Windows dan EFI yang ada; jangan centang format untuk partisi yang ingin disimpan.</li>
+                    <li>Atur nama, username, dan kata sandi. Enkripsi folder home bersifat opsional; simpan kata sandinya dengan aman.</li>
+                    <li>Tinjau perubahan disk sebelum memilih <strong>Install Now</strong>. Tunggu selesai, pilih <strong>Restart Now</strong>, lalu lepaskan USB saat diminta.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">04</span> Pembaruan dan perawatan awal</h2>
+                <ul>
+                    <li>Buka Update Manager, pilih mirror lokal yang tepercaya bila ditawarkan, lalu pasang pembaruan yang tersedia.</li>
+                    <li>Buka Driver Manager untuk memeriksa driver yang direkomendasikan bagi GPU, prosesor, atau adaptor Wi-Fi.</li>
+                    <li>Atur Timeshift untuk membuat snapshot sistem, pilih lokasi penyimpanan yang sesuai, dan aktifkan jadwal yang diinginkan.</li>
+                    <li>Jika ingin mengaktifkan firewall dan pengelola daya laptop:</li>
+                </ul>
+                <pre><code>sudo ufw enable
+sudo apt install tlp tlp-rdw
+sudo tlp start</code></pre>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">05</span> Troubleshooting umum</h2>
+                <ul>
+                    <li>Jika komputer langsung masuk Windows, periksa Boot Order UEFI dan pilih Linux Mint/GRUB sebagai prioritas.</li>
+                    <li>Jika layar hitam muncul setelah memasang driver NVIDIA, gunakan mode pemulihan atau panduan driver resmi untuk memasang versi yang cocok.</li>
+                    <li>Jika Wi-Fi/Bluetooth tidak terdeteksi, pastikan Fast Startup Windows nonaktif dan periksa driver/firmware perangkat di Driver Manager.</li>
+                    <li>Jika jam berbeda antara Windows dan Linux, periksa zona waktu serta konfigurasi RTC sebelum mengubah format jam hardware.</li>
+                </ul>
+            </section>
+
+            <footer class="guide-footer">
+                <p>&copy; 2026 Panduan Linux Mint Indonesia. Selalu tinjau perubahan disk sebelum menyetujui instalasi.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
+        
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panduan Install Kali Linux — deepnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <div class="stars" aria-hidden="true"></div>
+        <div class="guide-shell">
+            <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+            <header class="guide-heading">
+                <div class="chip">panduan instalasi</div>
+                <h1 class="guide-title">install kali linux</h1>
+                <p class="guide-description">Kali Linux dirancang untuk pengujian keamanan, audit, dan forensik; bukan distro desktop umum. Untuk belajar, pertimbangkan menjalankannya di mesin virtual terlebih dahulu.</p>
+            </header>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">01</span> Pilih image dan siapkan perangkat</h2>
+                <ul>
+                    <li>Persyaratan acuan: RAM minimal 2 GB (4 GB atau lebih untuk penggunaan tools berat) dan ruang disk minimal 20 GB; profil tools besar membutuhkan lebih banyak ruang.</li>
+                    <li>Unduh dari <a href="https://www.kali.org/get-kali/" target="_blank" rel="noopener noreferrer">situs resmi Kali Linux</a> dan verifikasi image mengikuti panduan resmi.</li>
+                    <li><strong>Installer Image</strong> untuk instalasi tetap, <strong>Live Image</strong> untuk boot langsung dari USB (termasuk opsi persistence), dan <strong>Everything Image</strong> untuk koleksi paket offline yang besar.</li>
+                    <li>Cadangkan data. Untuk dual boot Windows, cek UEFI/GPT, kecilkan partisi 50–100 GB menjadi ruang <em>Unallocated</em>, dan matikan Fast Startup. Jika installer perlu mengakses partisi Windows, BitLocker mungkin perlu dinonaktifkan. Buat backup dan simpan recovery key terlebih dahulu.</li>
+                    <li>Jika installer tidak melihat SSD/NVMe, periksa Intel RST/RAID. Jangan mengubah mode ke AHCI tanpa persiapan Windows terlebih dahulu.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">02</span> Buat USB dan mulai installer</h2>
+                <ol>
+                    <li>Buat USB dengan Rufus, Ventoy, atau BalenaEtcher. Pastikan USB yang benar dipilih karena seluruh isinya akan dihapus.</li>
+                    <li>Restart komputer, buka Boot Menu, lalu pilih USB Kali Linux.</li>
+                    <li>Pilih <strong>Graphical install</strong>, kemudian bahasa, lokasi, zona waktu, keyboard, jaringan, dan hostname (default biasanya <code>kali</code>).</li>
+                    <li>Buat akun pengguna standar dan kata sandi. Kali modern tidak menggunakan akun root default; gunakan <code>sudo</code> untuk tugas administratif.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">03</span> Partisi dan pilih paket</h2>
+                <ol>
+                    <li><strong>Guided - use entire disk</strong> menghapus sistem dan data di disk tujuan. Verifikasi disk yang dipilih sebelum melanjutkan.</li>
+                    <li>Opsi <strong>All files in one partition</strong> lebih sederhana. Partisi terpisah untuk <code>/home</code>, <code>/var</code>, atau <code>/tmp</code> ditujukan untuk kebutuhan yang lebih khusus.</li>
+                    <li>Pilih desktop yang diinginkan (XFCE adalah pilihan default yang umum) dan koleksi metapackage sesuai ruang disk: <code>top10</code>, <code>default</code>, atau <code>large</code>.</li>
+                    <li>Setujui pemasangan GRUB pada disk utama yang benar. Tinjau perubahan partisi, tunggu instalasi, lalu restart dan lepaskan USB.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">04</span> Perbarui dan gunakan dengan bertanggung jawab</h2>
+                <p>Setelah masuk ke sistem, pasang pembaruan keamanan:</p>
+                <pre><code>sudo apt update
+sudo apt full-upgrade</code></pre>
+                <ul>
+                    <li>Gunakan <code>kali-tweaks</code> untuk pengaturan desktop, SSH, dan metapackage yang tersedia.</li>
+                    <li>Pasang driver hanya dari sumber resmi dan sesuai perangkat.</li>
+                    <li>Gunakan alat keamanan hanya pada perangkat, akun, dan jaringan milik sendiri atau yang sudah mendapat izin tertulis.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">05</span> Troubleshooting umum</h2>
+                <ul>
+                    <li>Jika komputer langsung masuk Windows, periksa Boot Order UEFI dan prioritaskan entri Kali/GRUB.</li>
+                    <li>Jika layar hitam muncul setelah memasang driver NVIDIA, gunakan mode pemulihan atau opsi boot sementara, lalu pasang driver dari dokumentasi resmi.</li>
+                    <li>Jika Wi-Fi/Bluetooth tidak terdeteksi, periksa chipset dan firmware yang sesuai; Fast Startup Windows juga dapat mengunci perangkat jaringan.</li>
+                    <li>Jika jam berbeda pada dual boot, periksa zona waktu dan konfigurasi RTC sebelum mengubah perilaku jam hardware.</li>
+                </ul>
+            </section>
+
+            <footer class="guide-footer">
+                <p>&copy; 2026 Panduan Kali Linux Indonesia. Gunakan hanya untuk pembelajaran dan pengujian yang berizin.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

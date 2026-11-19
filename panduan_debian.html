@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panduan Install Debian — deepnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <div class="stars" aria-hidden="true"></div>
+        <div class="guide-shell">
+            <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+            <header class="guide-heading">
+                <div class="chip">panduan instalasi</div>
+                <h1 class="guide-title">install debian</h1>
+                <p class="guide-description">Debian berfokus pada kestabilan dan bisa dipakai sebagai desktop maupun server. Panduan ini menggunakan alur installer grafis.</p>
+            </header>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">01</span> Pilih image dan siapkan perangkat</h2>
+                <ul>
+                    <li>Debian Stable direkomendasikan untuk penggunaan yang mengutamakan kestabilan. Testing dan Unstable ditujukan untuk pengguna yang memahami risiko paket lebih baru.</li>
+                    <li>Persyaratan acuan: RAM minimal 1 GB (2 GB atau lebih disarankan untuk desktop) dan ruang disk minimal 10 GB (20 GB atau lebih disarankan).</li>
+                    <li>Unduh image dari <a href="https://www.debian.org/distrib/" target="_blank" rel="noopener noreferrer">situs resmi Debian</a>: Netinst untuk mengunduh paket saat instalasi, DVD-1 untuk media lebih lengkap, atau Live ISO untuk mencoba sesi live.</li>
+                    <li>Cadangkan data. Untuk dual boot Windows, cek BIOS Mode lewat <code>msinfo32</code> dan GPT lewat Disk Management. Kecilkan partisi Windows sekitar 50–100 GB dan biarkan sebagai <em>Unallocated</em>; matikan Fast Startup. Jika installer perlu mengakses partisi Windows, BitLocker mungkin perlu dinonaktifkan. Simpan backup dan recovery key serta pahami dampaknya sebelum mengubah enkripsi.</li>
+                    <li>Jika installer tidak melihat SSD/NVMe, periksa apakah Windows memakai Intel RST/RAID. Jangan mengganti mode storage ke AHCI tanpa menyiapkan Windows terlebih dahulu karena dapat membuat Windows gagal boot.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">02</span> Buat USB dan boot installer</h2>
+                <ol>
+                    <li>Di Rufus, pilih USB dan ISO Debian. Untuk komputer UEFI gunakan GPT dan target UEFI; alternatifnya gunakan Ventoy atau BalenaEtcher.</li>
+                    <li>Menulis image akan menghapus seluruh isi USB. Pastikan perangkat tujuan benar sebelum menekan <strong>Start</strong> atau <strong>Flash</strong>.</li>
+                    <li>Restart, buka Boot Menu (umumnya F12, F9, F8, Esc, atau tombol sesuai produsen), lalu pilih USB.</li>
+                    <li>Pilih <strong>Graphical install</strong>, bahasa, lokasi Indonesia, dan tata letak keyboard. Jika memakai Netinst, sambungkan ke internet.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">03</span> Konfigurasikan installer dan partisi</h2>
+                <ol>
+                    <li>Biarkan jaringan memakai DHCP bila tersedia, isi hostname (misalnya <code>debian-pc</code>), dan kosongkan Domain Name jika tidak menggunakan domain lokal.</li>
+                    <li>Agar akun utama dapat memakai <code>sudo</code>, biarkan kolom kata sandi root kosong saat instalasi. Jika membuat kata sandi root, akses sudo perlu dikonfigurasi sesudah instalasi.</li>
+                    <li>Pilih <strong>Guided - use entire disk</strong> hanya untuk instalasi yang menghapus isi disk. Untuk dual boot, pilih partisi manual dan jangan format partisi Windows atau EFI yang akan dipakai bersama.</li>
+                    <li>Acuan partisi UEFI: EFI FAT32 512 MB–1 GB, root <code>/</code> 50 GB atau lebih, swap 4–8 GB (atau sesuai kebutuhan hibernasi), dan <code>/home</code> bila ingin dipisah.</li>
+                    <li>Pilih mirror APT, lalu lingkungan desktop (GNOME, KDE Plasma, XFCE, Cinnamon, MATE, atau LXQt). Pilih SSH server hanya jika diperlukan, serta <strong>standard system utilities</strong>.</li>
+                    <li>Tinjau ringkasan perubahan disk sebelum menyetujuinya. Konfirmasi pemasangan GRUB pada EFI System Partition, lalu restart dan lepaskan USB saat diminta.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">04</span> Selesaikan konfigurasi awal</h2>
+                <p>Perbarui sistem dan pasang alat dasar dari repositori Debian:</p>
+                <pre><code>sudo apt update
+sudo apt upgrade
+sudo apt install build-essential curl wget git ufw flatpak</code></pre>
+                <ul>
+                    <li>Jika membutuhkan firmware atau driver tambahan, pastikan komponen repositori yang sesuai (termasuk <code>non-free-firmware</code> bila diperlukan) aktif untuk versi Debian yang dipakai, lalu ikuti panduan driver resmi.</li>
+                    <li>Jika Windows tidak muncul di menu GRUB, periksa konfigurasi <code>os-prober</code> dan jalankan ulang pembaruan GRUB sesuai dokumentasi Debian.</li>
+                    <li>Jika mengatur kata sandi root saat instalasi, ikuti dokumentasi resmi untuk menambahkan akun ke grup sudoers.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">05</span> Troubleshooting umum</h2>
+                <ul>
+                    <li>Jika komputer langsung masuk Windows, periksa Boot Order UEFI dan pilih entri Debian/GRUB sebagai prioritas.</li>
+                    <li>Jika layar hitam muncul setelah memasang driver NVIDIA, gunakan mode pemulihan atau parameter boot sementara sesuai dokumentasi Debian, lalu pasang driver yang cocok.</li>
+                    <li>Jika Wi-Fi/Bluetooth tidak terdeteksi, pastikan Fast Startup Windows nonaktif dan pasang firmware yang sesuai dengan chipset.</li>
+                    <li>Jika jam berbeda antara Windows dan Linux, periksa zona waktu serta konfigurasi RTC sebelum mengubah format jam hardware.</li>
+                </ul>
+            </section>
+
+            <footer class="guide-footer">
+                <p>&copy; 2026 Panduan Debian Indonesia. Ikuti dokumentasi resmi untuk versi dan perangkat yang digunakan.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

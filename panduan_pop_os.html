@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panduan Install Pop!_OS — deepnet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <div class="stars" aria-hidden="true"></div>
+        <div class="guide-shell">
+            <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+            <header class="guide-heading">
+                <div class="chip">panduan instalasi</div>
+                <h1 class="guide-title">install pop!_os</h1>
+                <p class="guide-description">Pop!_OS berbasis Ubuntu LTS dan ditujukan untuk produktivitas, STEM, dan gaming. Pilih ISO sesuai GPU sebelum memulai.</p>
+            </header>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">01</span> Pilih ISO dan siapkan perangkat</h2>
+                <ul>
+                    <li>Persyaratan acuan: RAM minimal 4 GB, penyimpanan minimal 20 GB (100 GB atau lebih disarankan), dan sistem 64-bit.</li>
+                    <li>Unduh dari <a href="https://system76.com/pop/download/" target="_blank" rel="noopener noreferrer">situs resmi System76</a>. Pilih ISO NVIDIA untuk perangkat dengan GPU NVIDIA; gunakan Intel/AMD ISO untuk grafis Intel atau AMD.</li>
+                    <li>Cadangkan data. Untuk dual boot Windows, cek UEFI/GPT, kecilkan partisi Windows 50–100 GB menjadi ruang <em>Unallocated</em>, dan matikan Fast Startup. Jika installer perlu mengakses partisi Windows, BitLocker mungkin perlu dinonaktifkan. Buat backup dan simpan recovery key terlebih dahulu.</li>
+                    <li>Jika installer tidak melihat SSD/NVMe, periksa Intel RST/RAID. Jangan mengubah mode ke AHCI tanpa persiapan Windows terlebih dahulu.</li>
+                    <li>Nonaktifkan Secure Boot sebelum instalasi Pop!_OS karena alur boot-nya menggunakan systemd-boot. Catat setelan BIOS sebelum mengubahnya.</li>
+                    <li>Buat USB dengan BalenaEtcher, Rufus (DD mode jika ISO tidak boot dalam mode standar), atau Ventoy.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">02</span> Boot ke installer</h2>
+                <ol>
+                    <li>Restart, buka Boot Menu UEFI, lalu pilih USB Pop!_OS.</li>
+                    <li>Pilih bahasa, wilayah, dan tata letak keyboard. Uji koneksi dan perangkat keras utama dari lingkungan live.</li>
+                    <li>Pilih mode Clean Install untuk instalasi pada disk kosong atau Custom (Advanced) untuk pengaturan manual.</li>
+                </ol>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">03</span> Pilih partisi dan enkripsi</h2>
+                <ul>
+                    <li><strong>Clean Install</strong> menghapus isi disk yang dipilih dan membuat partisi sistem, termasuk partisi Recovery sekitar 4 GB.</li>
+                    <li>Untuk dual boot, gunakan <strong>Custom (Advanced)</strong>. Buat partisi EFI terpisah untuk Pop!_OS, minimal 1024 MB (FAT32), agar tidak bergantung pada ruang EFI Windows yang kecil.</li>
+                    <li>Jika tidak memahami partisi EFI, mount point, atau format, jangan lanjutkan pengaturan manual. Tinjau ringkasan partisi dan pastikan partisi Windows tidak diformat.</li>
+                    <li>Buat akun pengguna. Enkripsi disk LUKS bersifat opsional; bila diaktifkan, simpan kata sandi dekripsi di tempat aman.</li>
+                </ul>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">04</span> Selesaikan dan atur sistem</h2>
+                <ol>
+                    <li>Konfirmasi instalasi hanya setelah memeriksa disk dan partisi. Tunggu selesai, klik <strong>Restart Device</strong>, lalu lepaskan USB.</li>
+                    <li>Selesaikan wizard awal untuk dock, top bar, gestur touchpad, dan privasi.</li>
+                    <li>Di desktop COSMIC, Auto-Tiling dapat diatur dari ikon Tiling; gunakan <code>Super + Y</code> untuk tiling dan <code>Super + Enter</code> untuk pengaturan jendela.</li>
+                    <li>Untuk laptop hybrid, pilih satu mode grafis melalui System76 Power: <code>sudo system76-power graphics integrated</code> untuk hemat daya, <code>sudo system76-power graphics nvidia</code> untuk performa, atau <code>sudo system76-power graphics hybrid</code> untuk mode dinamis.</li>
+                </ol>
+                <pre><code>sudo apt update
+sudo apt full-upgrade
+flatpak update</code></pre>
+            </section>
+
+            <section class="guide-card">
+                <h2><span class="guide-number">05</span> Troubleshooting umum</h2>
+                <ul>
+                    <li>Jika komputer langsung masuk Windows, periksa Boot Order UEFI dan prioritaskan entri Pop!_OS/systemd-boot.</li>
+                    <li>Jika layar hitam muncul, pastikan ISO sesuai GPU; untuk NVIDIA, gunakan image dan petunjuk driver resmi System76.</li>
+                    <li>Jika Wi-Fi/Bluetooth tidak terdeteksi, periksa firmware chipset dan pastikan Fast Startup Windows nonaktif.</li>
+                    <li>Jika jam berbeda pada dual boot, periksa zona waktu dan pengaturan RTC sebelum mengubah jam hardware.</li>
+                </ul>
+            </section>
+
+            <footer class="guide-footer">
+                <p>&copy; 2026 Panduan Pop!_OS Indonesia. Selalu periksa kembali disk tujuan sebelum instalasi bersih.</p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

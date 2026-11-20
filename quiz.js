@@ -4,36 +4,48 @@ const quizResult = document.getElementById('quiz-result');
 const distroInfo = {
   debian: {
     name: 'Debian',
+    image: 'debian.png',
+    guide: 'panduan_debian.html',
     suitable: 'Cocok untuk kamu yang mengutamakan stabilitas, keandalan, dan umur panjang.',
     reason: 'Debian dikenal stabil dan cocok untuk workstation, pengembangan, server, maupun homelab yang membutuhkan lingkungan konsisten.',
     note: 'Paket versi Stable cenderung lebih konservatif, tetapi sistemnya minim kejutan.'
   },
   mint: {
     name: 'Linux Mint',
+    image: 'mint.png',
+    guide: 'panduan_mint.html',
     suitable: 'Cocok untuk pemula atau pengguna yang ingin pengalaman simpel dan nyaman.',
     reason: 'Antarmukanya intuitif, banyak hal bisa dilakukan lewat GUI, dan nyaman untuk aktivitas harian.',
     note: 'Pilihan ideal jika kamu ingin fokus menggunakan komputer tanpa sering mengatur sistem.'
   },
   arch: {
     name: 'Arch Linux',
+    image: 'arch.png',
+    guide: 'panduan_arch.html',
     suitable: 'Cocok untuk power user dan pembelajar teknis yang ingin kendali penuh.',
     reason: 'Model rolling release dan sistem yang bisa dirakit sesuai kebutuhan memberi akses ke paket baru dan kustomisasi luas.',
     note: 'Perlu kesiapan membaca dokumentasi, teliti saat update, dan meluangkan waktu untuk setup serta troubleshooting.'
   },
   cachyos: {
     name: 'CachyOS',
+    image: 'cache%20os.png',
+    guide: 'panduan_cachyos.html',
     suitable: 'Cocok untuk kamu yang mengejar performa tinggi, latensi rendah, dan sistem responsif.',
     reason: 'Berbasis Arch dengan kernel dan optimasi yang disiapkan untuk performa modern, terutama gaming dan beban kerja berat.',
     note: 'Pembaruan dan pendekatannya mengikuti keluarga Arch, dengan optimasi performa yang sudah disiapkan.'
   },
   popos: {
     name: 'Pop!_OS',
+    image: 'pop%20os.png',
+    guide: 'panduan_pop_os.html',
     suitable: 'Cocok untuk pengalaman modern yang praktis, terutama untuk GPU, kerja kreatif, atau multitasking.',
     reason: 'Pop!_OS dirancang nyaman dipakai sehari-hari dan punya opsi instalasi yang memudahkan penggunaan kartu grafis NVIDIA.',
     note: 'Memberi keseimbangan antara kemudahan penggunaan dan kesiapan untuk perangkat keras grafis/komputasi.'
   },
   kali: {
     name: 'Kali Linux',
+    image: 'kali%20linux.png',
+    guide: 'panduan_kali.html',
     suitable: 'Cocok untuk belajar dan bekerja di bidang keamanan siber, audit, serta forensik digital.',
     reason: 'Kali menyediakan lingkungan dan perangkat untuk pekerjaan keamanan yang terarah.',
     note: 'Sebaiknya gunakan di VM, live boot, atau lab terisolasi; Kali bukan pilihan ideal sebagai sistem harian umum bagi pemula.'
@@ -323,6 +335,12 @@ quizForm.addEventListener('submit', (event) => {
   document.getElementById('result-suitable').textContent = result.suitable;
   document.getElementById('result-reason').textContent = result.reason;
   document.getElementById('result-note').textContent = result.note;
+  const resultDistro = document.getElementById('result-distro');
+  const resultDistroImage = document.getElementById('result-distro-image');
+  resultDistro.href = result.guide;
+  resultDistro.setAttribute('aria-label', `Buka panduan instalasi ${result.name}`);
+  resultDistroImage.src = result.image;
+  resultDistroImage.alt = `Monitor CRT ${result.name}`;
   quizResult.hidden = false;
   quizResult.scrollIntoView({
     behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,73 +8,99 @@
   <link rel="stylesheet" href="styles.css">
   <script src="quiz.js" defer></script>
 </head>
+
 <body>
-<main class="page">
-  <section class="quiz-shell">
-    <div class="stars" aria-hidden="true"></div>
-    <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
-    <header class="quiz-heading">
-      <div class="chip">quiz interaktif</div>
-      <h1 class="quiz-title">distro linux<br>apa yang cocok?</h1>
-      <p class="quiz-description">Pilih jawaban yang paling menggambarkan kebutuhanmu. Jawab 4 soal untuk melihat rekomendasi.</p>
-    </header>
+  <main class="page">
+    <section class="quiz-shell">
+      <div class="stars" aria-hidden="true"></div>
+      <a class="quiz-back" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">◀ kembali ke deepnet</a>
+      <header class="quiz-heading">
+        <div class="chip">quiz interaktif</div>
+        <h1 class="quiz-title">distro linux<br>apa yang cocok?</h1>
+        <p class="quiz-description">Pilih jawaban yang paling menggambarkan kebutuhanmu. Jawab 4 soal untuk melihat
+          rekomendasi.</p>
+      </header>
 
-    <form id="distro-quiz">
-      <fieldset class="quiz-question">
-        <legend><span class="question-number">01</span> Apa prioritas utama kamu saat menggunakan sistem operasi?</legend>
-        <div class="quiz-options">
-          <label class="quiz-option"><input type="radio" name="q1" value="A" required><span><b>A.</b> Stabilitas maksimal, minim bug, dan bisa diandalkan dalam jangka panjang.</span></label>
-          <label class="quiz-option"><input type="radio" name="q1" value="B" required><span><b>B.</b> Mudah dipakai, tampilannya familiar, dan langsung siap setelah instalasi.</span></label>
-          <label class="quiz-option"><input type="radio" name="q1" value="C" required><span><b>C.</b> Kontrol penuh, update terbaru, dan belajar Linux dari dasar.</span></label>
-          <label class="quiz-option"><input type="radio" name="q1" value="D" required><span><b>D.</b> Performa gaming atau komputasi tinggi dengan optimasi modern.</span></label>
+      <form id="distro-quiz">
+        <fieldset class="quiz-question">
+          <legend><span class="question-number">01</span> Apa prioritas utama kamu saat menggunakan sistem operasi?
+          </legend>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q1" value="A" required><span><b>A.</b> Stabilitas
+                maksimal, minim bug, dan bisa diandalkan dalam jangka panjang.</span></label>
+            <label class="quiz-option"><input type="radio" name="q1" value="B" required><span><b>B.</b> Mudah dipakai,
+                tampilannya familiar, dan langsung siap setelah instalasi.</span></label>
+            <label class="quiz-option"><input type="radio" name="q1" value="C" required><span><b>C.</b> Kontrol penuh,
+                update terbaru, dan belajar Linux dari dasar.</span></label>
+            <label class="quiz-option"><input type="radio" name="q1" value="D" required><span><b>D.</b> Performa gaming
+                atau komputasi tinggi dengan optimasi modern.</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-question">
+          <legend><span class="question-number">02</span> Bagaimana kenyamanan kamu dengan terminal dan troubleshooting?
+          </legend>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q2" value="A" required><span><b>A.</b> Nyaman mengelola
+                server/sistem dan suka konfigurasi konservatif yang teruji.</span></label>
+            <label class="quiz-option"><input type="radio" name="q2" value="B" required><span><b>B.</b> Lebih suka GUI;
+                terminal dipakai seperlunya dengan panduan.</span></label>
+            <label class="quiz-option"><input type="radio" name="q2" value="C" required><span><b>C.</b> Sangat nyaman di
+                terminal, membaca dokumentasi, dan mengutak-atik konfigurasi.</span></label>
+            <label class="quiz-option"><input type="radio" name="q2" value="D" required><span><b>D.</b> Nyaman mengatur
+                driver/performa, tetapi ingin penggunaan sehari-hari tetap praktis.</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-question">
+          <legend><span class="question-number">03</span> Apa skenario penggunaan utama kamu?</legend>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q3" value="A" required><span><b>A.</b> Produktivitas,
+                homelab/server, atau workstation yang butuh keandalan.</span></label>
+            <label class="quiz-option"><input type="radio" name="q3" value="B" required><span><b>B.</b> Browsing,
+                dokumen, dan multimedia untuk penggunaan harian.</span></label>
+            <label class="quiz-option"><input type="radio" name="q3" value="C" required><span><b>C.</b> Desktop kustom,
+                power user, atau mencoba ekosistem paket terbaru.</span></label>
+            <label class="quiz-option"><input type="radio" name="q3" value="D" required><span><b>D.</b> Gaming, workflow
+                GPU/AI/kreatif, atau mengejar responsivitas maksimal.</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-question">
+          <legend><span class="question-number">04</span> Pernyataan mana yang paling menggambarkan kebutuhanmu?
+          </legend>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q4" value="A" required><span><b>A.</b> “Paket agak lama
+                tidak masalah asalkan sangat stabil.”</span></label>
+            <label class="quiz-option"><input type="radio" name="q4" value="B" required><span><b>B.</b> “Aku mau sistem
+                ramah pemula yang langsung berfungsi dan minim drama.”</span></label>
+            <label class="quiz-option"><input type="radio" name="q4" value="C" required><span><b>C.</b> “Aku ingin
+                merakit sistem sendiri tanpa aplikasi bawaan yang tidak perlu.”</span></label>
+            <label class="quiz-option"><input type="radio" name="q4" value="D" required><span><b>D.</b> “Aku butuh
+                kernel/performa kencang atau workstation GPU modern yang praktis.”</span></label>
+          </div>
+        </fieldset>
+
+        <div class="quiz-actions">
+          <button class="px-btn quiz-submit" type="submit">lihat hasil ▶</button>
+          <button class="quiz-reset" type="reset">ulang kuis</button>
         </div>
-      </fieldset>
+      </form>
 
-      <fieldset class="quiz-question">
-        <legend><span class="question-number">02</span> Bagaimana kenyamanan kamu dengan terminal dan troubleshooting?</legend>
-        <div class="quiz-options">
-          <label class="quiz-option"><input type="radio" name="q2" value="A" required><span><b>A.</b> Nyaman mengelola server/sistem dan suka konfigurasi konservatif yang teruji.</span></label>
-          <label class="quiz-option"><input type="radio" name="q2" value="B" required><span><b>B.</b> Lebih suka GUI; terminal dipakai seperlunya dengan panduan.</span></label>
-          <label class="quiz-option"><input type="radio" name="q2" value="C" required><span><b>C.</b> Sangat nyaman di terminal, membaca dokumentasi, dan mengutak-atik konfigurasi.</span></label>
-          <label class="quiz-option"><input type="radio" name="q2" value="D" required><span><b>D.</b> Nyaman mengatur driver/performa, tetapi ingin penggunaan sehari-hari tetap praktis.</span></label>
-        </div>
-      </fieldset>
-
-      <fieldset class="quiz-question">
-        <legend><span class="question-number">03</span> Apa skenario penggunaan utama kamu?</legend>
-        <div class="quiz-options">
-          <label class="quiz-option"><input type="radio" name="q3" value="A" required><span><b>A.</b> Produktivitas, homelab/server, atau workstation yang butuh keandalan.</span></label>
-          <label class="quiz-option"><input type="radio" name="q3" value="B" required><span><b>B.</b> Browsing, dokumen, dan multimedia untuk penggunaan harian.</span></label>
-          <label class="quiz-option"><input type="radio" name="q3" value="C" required><span><b>C.</b> Desktop kustom, power user, atau mencoba ekosistem paket terbaru.</span></label>
-          <label class="quiz-option"><input type="radio" name="q3" value="D" required><span><b>D.</b> Gaming, workflow GPU/AI/kreatif, atau mengejar responsivitas maksimal.</span></label>
-        </div>
-      </fieldset>
-
-      <fieldset class="quiz-question">
-        <legend><span class="question-number">04</span> Pernyataan mana yang paling menggambarkan kebutuhanmu?</legend>
-        <div class="quiz-options">
-          <label class="quiz-option"><input type="radio" name="q4" value="A" required><span><b>A.</b> “Paket agak lama tidak masalah asalkan sangat stabil.”</span></label>
-          <label class="quiz-option"><input type="radio" name="q4" value="B" required><span><b>B.</b> “Aku mau sistem ramah pemula yang langsung berfungsi dan minim drama.”</span></label>
-          <label class="quiz-option"><input type="radio" name="q4" value="C" required><span><b>C.</b> “Aku ingin merakit sistem sendiri tanpa aplikasi bawaan yang tidak perlu.”</span></label>
-          <label class="quiz-option"><input type="radio" name="q4" value="D" required><span><b>D.</b> “Aku butuh kernel/performa kencang atau workstation GPU modern yang praktis.”</span></label>
-        </div>
-      </fieldset>
-
-      <div class="quiz-actions">
-        <button class="px-btn quiz-submit" type="submit">lihat hasil ▶</button>
-        <button class="quiz-reset" type="reset">ulang kuis</button>
-      </div>
-    </form>
-
-    <section class="quiz-result" id="quiz-result" aria-live="polite" aria-labelledby="result-name" hidden>
-      <div class="chip">hasil rekomendasi</div>
-      <h2 class="quiz-result-title" id="result-name"></h2>
-      <p class="result-suitable" id="result-suitable"></p>
-      <p id="result-reason"></p>
-      <p class="result-note" id="result-note"></p>
-      <a class="px-btn result-home" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">kembali ke deepnet</a>
+      <section class="quiz-result" id="quiz-result" aria-live="polite" aria-labelledby="result-name" hidden>
+        <div class="chip">hasil rekomendasi</div>
+        <h2 class="quiz-result-title" id="result-name"></h2>
+        <p class="result-suitable" id="result-suitable"></p>
+        <p id="result-reason"></p>
+        <p class="result-note" id="result-note"></p>
+        <a class="px-btn result-home" href="deepnet%20%E2%80%94%20Landing%20Page%20Retro%20Pixel.html">kembali ke
+          deepnet</a>
+      </section>
     </section>
-  </section>
-</main>
+    <footer class="site-footer">
+      <p>&copy; 2026 deepnet. Linux untuk pemula.</p>
+    </footer>
+  </main>
 </body>
+
 </html>

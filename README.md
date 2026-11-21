@@ -11,29 +11,27 @@
 
 ## 📖 Tentang Proyek
 
-**DeepNet** adalah _[isi satu kalimat: proyek ini dibuat untuk apa dan untuk siapa]_.
+**DeepNet** adalah website yang pemilihan distro popular untuk pengguna baru.
 
 Tuliskan 2–3 paragraf singkat di sini yang menjelaskan:
 
-- Latar belakang: masalah apa yang ingin diselesaikan.
-- Solusi: apa yang ditawarkan DeepNet.
-- Ruang lingkup: apa yang **sudah** dan **belum** termasuk dalam proyek ini.
+dengan kebusukan kondisi windows sekarang banyak pengguna mau tukar ke linux, tetapi masih binggung dengan distro popular apa yang mereka sebaiknya pilih, serta, pengguna baru juga belum tahu cara install ke komputer mereka tanpa rasa risau.
+
+Datang lah DeepNet, website yang dapat membantu pengguna untuk transisi ke distro yang paling cocok dengan kebutuhan dan prefrensi mereka, dengan menjawaban beberapa pertanyaan simple pengguna akan dapat saranan yang paling cocok untuk mereka dari distro-distro yang popular, serta mereka juga langsung di kasih car installnya dengan panduan yang "risau free"
+
+website ini menentukan hanya dari 6 distro terpopular saat ini(kecuali unbuntu)
 
 ## ✨ Fitur
 
-- [ ] Fitur 1 — _deskripsi singkat_
-- [ ] Fitur 2 — _deskripsi singkat_
-- [ ] Fitur 3 — _deskripsi singkat_
+- Quiz interaktif — _yang kasih saran distro popular terbaik_
+- panduan install — _panduan yang lengakap untuk install distro pilihan_
 
-> Ubah `[ ]` menjadi `[x]` untuk fitur yang sudah selesai dikerjakan.
 
 ## 🧱 Teknologi
 
 | Kategori     | Teknologi          |
 | ------------ | ------------------ |
-| Bahasa       | _contoh: Python_   |
-| Framework    | _contoh: Flask_    |
-| Database     | _contoh: SQLite_   |
+| Bahasa       | html   |
 | Tools lain   | _contoh: Git_      |
 
 ## 📂 Struktur Proyek
@@ -105,10 +103,12 @@ Gunakan [Conventional Commits](https://www.conventionalcommits.org/id/) agar riw
 
 | No | Nama                | Peran            | GitHub                                     |
 | -- | ------------------- | ---------------- | ------------------------------------------ |
-| 1  | _Nama Anggota 1_    | Ketua / Backend  | [@username](https://github.com/username)   |
-| 2  | _Nama Anggota 2_    | Frontend         | [@username](https://github.com/username)   |
-| 3  | _Nama Anggota 3_    | UI/UX            | [@username](https://github.com/username)   |
-| 4  | _Nama Anggota 4_    | Dokumentasi      | [@username](https://github.com/username)   |
+| 1  | Abid Aryasatya      | Ketua / frontend uiux  | [@aboom124](https://github.com/aboom124)   |
+| 2  | Cakra Yudhistira Prasetya    | pembuatan panduan arch       | [@cakray](https://github.com/cakray)   |
+| 3  | Nurul Ainna Naftalya    | pembuatan panduan debian          | [@ainnanaftalya-source](https://github.com/ainnanaftalya-source)   |
+| 4  | Putri Jasmine Hasya Sholihah    | pembuatan panduan debian      | [@minteaac](https://github.com/minteaac)   |
+| 5  | rizky    | pembuatan panduan mint / uiux      | [@username](https://github.com/username)   |
+| 5  | -anggota6-    | dokumentasi     | [@username](https://github.com/username)   |
 
 ## 📄 Lisensi
 

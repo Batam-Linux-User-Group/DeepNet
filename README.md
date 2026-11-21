@@ -22,6 +22,14 @@ website ini menentukan hanya dari 6 distro terpopular saat ini(kecuali unbuntu)
 - Quiz interaktif — _yang kasih saran distro popular terbaik_
 - panduan install — _panduan yang lengakap untuk install distro pilihan_
 
+## 🐧 Distro yang Tersedia
+
+- **Linux Mint**[span_17](start_span)[span_17](end_span)
+- **Debian**[span_18](start_span)[span_18](end_span)
+- **Arch Linux**[span_19](start_span)[span_19](end_span)
+- **Pop!_OS**[span_20](start_span)[span_20](end_span)
+- **CachyOS**[span_21](start_span)[span_21](end_span)
+- **Kali Linux**[span_22](start_span)[span_22](end_span)
 
 ## 🧱 Teknologi
 

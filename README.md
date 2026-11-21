@@ -76,21 +76,14 @@ source .venv/bin/activate        # Linux / macOS
 pip install -r requirements.txt  # sesuaikan dengan stack proyek
 ```
 
-## 🖥️ Menjalankan Proyek
+## 🌐 Deployment & Akses Website
 
-```bash
-# contoh
-python main.py
-```
+Proyek ini sudah di-deploy dan bisa langsung diakses secara online melalui **Vercel**:
 
-Buka `http://localhost:8000` di browser (jika proyek berbasis web).
+- **Link Website:** [https://deepnet-alpha.vercel.app/](https://deepnet-alpha.vercel.app/)
 
-## 🧪 Pengujian
-
-```bash
-# contoh
-pytest
-```
+Jika ingin menjalankannya secara lokal setelah clone repository:
+- Buka folder proyek `DeepNet` menggunakan **Visual Studio Code**, lalu jalankan file `index.html` di folder `src/` menggunakan ekstensi **Live Server**, atau buka langsung file `index.html` melalui browser.
 
 ## 🤝 Kontribusi
 

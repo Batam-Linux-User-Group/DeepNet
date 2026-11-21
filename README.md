@@ -13,10 +13,6 @@
 
 **DeepNet** adalah website yang pemilihan distro popular untuk pengguna baru.
 
-Tuliskan 2–3 paragraf singkat di sini yang menjelaskan:
-
-dengan kebusukan kondisi windows sekarang banyak pengguna mau tukar ke linux, tetapi masih binggung dengan distro popular apa yang mereka sebaiknya pilih, serta, pengguna baru juga belum tahu cara install ke komputer mereka tanpa rasa risau.
-
 Datang lah DeepNet, website yang dapat membantu pengguna untuk transisi ke distro yang paling cocok dengan kebutuhan dan prefrensi mereka, dengan menjawaban beberapa pertanyaan simple pengguna akan dapat saranan yang paling cocok untuk mereka dari distro-distro yang popular, serta mereka juga langsung di kasih car installnya dengan panduan yang "risau free"
 
 website ini menentukan hanya dari 6 distro terpopular saat ini(kecuali unbuntu)

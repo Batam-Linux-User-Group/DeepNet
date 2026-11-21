@@ -11,7 +11,7 @@
 
 ## 📖 Tentang Proyek
 
-**DeepNet** adalah website yang pemilihan distro popular untuk pengguna baru.
+Mau pindah ke Linux tapi masih bingung mulai dari distro mana, download-nya di mana, atau takut salah pas install?
 
 Datang lah DeepNet, website yang dapat membantu pengguna untuk transisi ke distro yang paling cocok dengan kebutuhan dan prefrensi mereka, dengan menjawaban beberapa pertanyaan simple pengguna akan dapat saranan yang paling cocok untuk mereka dari distro-distro yang popular, serta mereka juga langsung di kasih car installnya dengan panduan yang "risau free"
 

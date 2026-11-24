@@ -104,7 +104,7 @@ Gunakan [Conventional Commits](https://www.conventionalcommits.org/id/) agar riw
 | 2  | Cakra Yudhistira Prasetya    | pembuatan panduan arch       | [@cakray](https://github.com/cakray)   |
 | 3  | Nurul Ainna Naftalya    | pembuatan panduan debian          | [@ainnanaftalya-source](https://github.com/ainnanaftalya-source)   |
 | 4  | Putri Jasmine Hasya Sholihah    | pembuatan panduan debian      | [@minteaac](https://github.com/minteaac)   |
-| 5  | rizky    | pembuatan panduan mint / uiux      | [@Rizky](https://github.com/username)   |
+| 5  | rizky    | pembuatan panduan mint / uiux      | [@kyyruyy](https://github.com/username)   |
 | 5  | Irsyad Haziq Alghifari    | dokumentasi     | [@tebasrumput](https://github.com/tebasrumput)   |
 
 ## 📄 Lisensi
